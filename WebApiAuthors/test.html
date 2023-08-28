@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>FrontEnd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <!-- page to test the domain restrictions -->
+    <script>
+        var headers = new Headers({
+            "x-version": 1,
+            "X-Api-Key": "8365ba04aaa34106b36915c670b9bb4a"
+        });
+
+        fetch("https://localhost:7197/api/Author", { headers, mode:"cors" })
+            .then(response => response.json())
+            .then(data => console.log(data));
+    </script>
+</body>
+
+</html>

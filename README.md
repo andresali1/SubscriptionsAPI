@@ -1,2 +1,2 @@
-# SubscriptionsAPI
-Api project based on WebApiAuthors with subscription funcionalities
+# InscriptionsAPI
+Api project to handle user subscriptions
