@@ -67,6 +67,7 @@ public class RequestsLimitMiddleware
         var keyDB = await context.APIKey
             .Include(k => k.DomainRestrictions)
             .Include(k => k.IPRestrictions)
+            .Include(k => k.User)
             .FirstOrDefaultAsync(k => k.Key == key);
         
         if (keyDB == null)
@@ -102,6 +103,12 @@ public class RequestsLimitMiddleware
                 );
                 return;
             }
+        }
+        else if (keyDB.User.BadPaymentHistory)
+        {
+            httpContext.Response.StatusCode = 400;
+            await httpContext.Response.WriteAsync("El usuario tiene factura pendiente de pago");
+            return;
         }
 
         var passRestrictions = PassOneRestriction(keyDB, httpContext);

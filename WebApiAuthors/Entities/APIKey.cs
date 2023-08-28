@@ -9,7 +9,7 @@ namespace WebApiAuthors.Entities
         public KeyType KeyType { get; set; }
         public bool Active { get; set; }
         public string UserId { get; set; }
-        public IdentityUser User { get; set; }
+        public AppUser User { get; set; }
         public List<DomainRestriction> DomainRestrictions { get; set; }
         public List<IPRestriction> IPRestrictions { get; set; }
     }

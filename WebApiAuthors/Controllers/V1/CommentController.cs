@@ -17,9 +17,9 @@ namespace WebApiAuthors.Controllers.V1
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public CommentController(ApplicationDbContext context, IMapper mapper, UserManager<IdentityUser> userManager)
+        public CommentController(ApplicationDbContext context, IMapper mapper, UserManager<AppUser> userManager)
         {
             _context = context;
             _mapper = mapper;

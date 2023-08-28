@@ -4,7 +4,7 @@ using WebApiAuthors.Entities;
 
 namespace WebApiAuthors
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
@@ -15,6 +15,9 @@ namespace WebApiAuthors
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Author_Book>().HasKey(ab => new { ab.AuthorId, ab.BookId });
+
+            modelBuilder.Entity<Bill>()
+                .Property(x => x.Price).HasColumnType("decimal(18,2)");
         }
 
         public DbSet<Author> Author { get; set; }
@@ -25,5 +28,7 @@ namespace WebApiAuthors
         public DbSet<Request> Request { get; set; }
         public DbSet<DomainRestriction> DomainRestriction { get; set; }
         public DbSet<IPRestriction> IPRestriction { get; set; }
+        public DbSet<Bill> Bill { get; set; }
+        public DbSet<GeneratedBill> GeneratedBill { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using WebApiAuthors.DTOs;
+using WebApiAuthors.Entities;
 using WebApiAuthors.Services;
 
 namespace WebApiAuthors.Controllers.V1
@@ -16,13 +17,13 @@ namespace WebApiAuthors.Controllers.V1
     [Route("api/v1/account")]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly IConfiguration _configuration;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly KeyService _keyService;
 
-        public AccountController(UserManager<IdentityUser> userManager, IConfiguration configuration,
-                                 SignInManager<IdentityUser> signInManager, KeyService keyService)
+        public AccountController(UserManager<AppUser> userManager, IConfiguration configuration,
+                                 SignInManager<AppUser> signInManager, KeyService keyService)
         {
             _userManager = userManager;
             _configuration = configuration;
@@ -38,7 +39,7 @@ namespace WebApiAuthors.Controllers.V1
         [HttpPost("register", Name = "registerUser")] // api/account/register
         public async Task<ActionResult<AuthenticationResponse>> Register(UserCredentials userCredentials)
         {
-            var user = new IdentityUser { UserName = userCredentials.Email, Email = userCredentials.Email };
+            var user = new AppUser { UserName = userCredentials.Email, Email = userCredentials.Email };
             var result = await _userManager.CreateAsync(user, userCredentials.Password);
 
             if (result.Succeeded)
