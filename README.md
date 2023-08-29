@@ -1,4 +1,4 @@
-# InscriptionsAPI
+# SubscriptionsAPI
 Proyecto WebApi realizado para pruebas, en el cual se pueden crear autores, libros y comentarios para esos libros, también tiene un sistema de autenticación y autorización para poder ser consumido para pruebas desde cualquier cliente, usa local db como base de datos al no ser un proyecto muy grande. Adicioonalmente, tiene una funcionalidad para crear API key emulando un sistema de pago por petición realizada el cual se manejará desde base de datos.
 
 ### Tecnologías Utilizadas
