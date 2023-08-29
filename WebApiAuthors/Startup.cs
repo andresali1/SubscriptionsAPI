@@ -125,6 +125,8 @@ namespace WebApiAuthors
             services.AddTransient<LinksGenerator>();
             services.AddTransient<HATEOASAuthorFilterAttribute>();
             services.AddSingleton < IActionContextAccessor, ActionContextAccessor>();
+
+            services.AddHostedService<BillHostedService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
